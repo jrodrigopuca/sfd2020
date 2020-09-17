@@ -1,0 +1,26 @@
+<!--
+    Demo 1: Usar A-Frame 
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+</head>
+<body>
+    <a-scene>
+        
+        <a-sky color="#cfd8dc"></a-sky>
+
+        <a-box id="caja" position="-1 0.5 -3" rotation="0 45 0" color="#1de9b6"></a-box>
+        <a-text position="-5 1 -4" value="Hola Salta!" width="16"></a-text>
+
+        <a-camera>
+            <a-cursor></a-cursor>
+        </a-camera>
+
+    </a-scene>
+</body>
+</html>
