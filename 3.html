@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Demo 3</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aframe/0.7.1/aframe.js"></script>
+    <script src="//cdn.rawgit.com/donmccurdy/aframe-extras/v5.0.1/dist/aframe-extras.min.js"></script>
+    <script src="https://unpkg.com/aframe-particle-system-component@1.0.9/dist/aframe-particle-system-component.min.js"></script>
+
+</head>
+<body>
+    <a-scene>
+        <!-- Imagen de 360°-->
+        <a-assets>
+            <img id="cielo" src="media/image.jpg">
+        </a-assets>
+                
+        <a-sky src="#cielo"></a-sky>
+
+        <!-- agregando nuevas entidades -->
+        <a-ocean color="blue" depth="100" width="100" density="100" opacity="0.8"></a-ocean>
+        <a-entity id="rain" particle-system="preset: dust; color: white; particleCount: 1000"></a-entity>
+
+        <!-- Otros elementos-->
+        <a-box id="caja" position="-1 0.5 -3" rotation="0 45 0" color="#1de9b6"></a-box>
+        <a-text position="-5 1 -4" value="Hola Salta" width="16"></a-text>
+
+        <a-camera>
+            <a-cursor></a-cursor>
+        </a-camera>
+        
+    </a-scene>
+
+</body>
+</html>
