@@ -1,0 +1,42 @@
+<!--
+    Demo 4: Comportamiento
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title>Demo 4</title>
+    <!-- Traer a A-Frame -->
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+</head>
+<body>
+    <a-scene>
+        <!-- Imagen de 360°-->
+        <a-assets>
+            <img id="cielo" src="media/image.jpg">
+        </a-assets>
+        
+        <a-sky src="#cielo"></a-sky>
+
+        <!-- Otros elementos-->
+        <a-box id="caja" position="-1 0.5 -3" rotation="0 45 0" color="#1de9b6"></a-box>
+        <a-text position="-5 1 -4" value="Hola Salta" width="16"></a-text>
+
+        <!-- Camara y cursor -->
+        <a-camera>
+            <a-cursor></a-cursor>
+        </a-camera>
+
+    </a-scene>
+    <script>
+        var caja= document.querySelector("#caja");
+        var texto=document.querySelector("a-text");
+        var valor=0;
+        caja.addEventListener("click",function(){
+            valor+=1;
+            texto.setAttribute("value",valor)
+        })
+    </script>
+</body>
+</html>

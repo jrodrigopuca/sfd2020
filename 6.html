@@ -1,0 +1,66 @@
+<!--
+    Demo 6: Crear componente IA
+-->
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Demo 6</title>
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+</head>
+<body>
+    <script>
+        AFRAME.registerComponent('ia',{
+            schema:{
+            },
+            init: function(){},
+            update:function(){},
+            tick:function(){
+
+                let camera = document.querySelector('#cam');
+                let worldPos = new THREE.Vector3();
+                worldPos.setFromMatrixPosition(camera.object3D.matrixWorld);
+
+                let mover=(Math.random() * 0.03) + 0.01;
+                
+                //Va buscando ubicación (es posible mejorarlo)
+                if (!((Math.floor(this.el.object3D.position.x- worldPos.x)==0) && (Math.floor(this.el.object3D.position.z-worldPos.z)==0))){
+                    if (worldPos.x < this.el.object3D.position.x){
+                        this.el.object3D.position.x-=mover;
+                    }else if (worldPos.x > this.el.object3D.position.x){
+                        this.el.object3D.position.x+=mover;
+                    }
+
+                    if (worldPos.z < this.el.object3D.position.z){
+                        this.el.object3D.position.z-=mover;
+                    }
+                    if (worldPos.z > this.el.object3D.position.z){
+                        this.el.object3D.position.z+=mover;
+                    }
+                }
+            },
+        })
+
+    </script>
+    <a-scene>
+        <!-- Imagen de 360°-->
+        <a-assets>
+            <img id="cielo" src="media/image.jpg">
+        </a-assets>
+        
+        <a-sky src="#cielo"></a-sky>
+
+        <!--Caja para poner de sombrero-->
+        <a-box ia position="-1 2 -5" color="#1de9b6" depth="0.5" height="0.5" width="0.5"></a-box>
+
+        <a-entity id="cam">
+            <a-cursor scale="2 2 2" color="white" opacity="0.3">
+            </a-cursor>
+        </a-entity>
+
+    </a-scene>
+
+</body>

@@ -1,0 +1,55 @@
+<!--
+    Demo 5: Crear componente
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Demo 5</title>
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+</head>
+
+<body>
+    <script>
+        var x;
+        //anterior=0;
+        AFRAME.registerComponent('mover', {
+            schema:{
+                anterior:{type:'number'},
+                originalY:{type:'number'},
+            },
+            init: function(){
+                console.log("inicia");
+                this.anterior=0;
+                this.originalY=this.el.object3D.position.y;
+            },
+            update: function(){
+                console.log("actualiza");
+            },
+            tick:function(time,timeDelta){
+                seg= ~~(time / 1000);
+                this.el.object3D.position.z+=0.01;
+                let max= 0;
+                let min= 10;
+                if (this.el.object3D.position.z > -1){
+                    nuevoY=Math.floor(Math.random() * (max - min + 1)) + min;
+
+                    this.el.object3D.position.y=nuevoY;
+                    this.el.object3D.position.z=-3;
+                }
+            }
+        })    
+    </script>
+
+    <a-scene>
+        <a-box mover position="-1 2 -5" color="#1de9b6" depth="0.5" height="0.5" width="0.5"></a-box>
+        <a-sphere mover position="-5 3 -5" color="yellow" radius="0.3"></a-sphere>
+
+    </a-scene>
+</body>
+
+</html>
