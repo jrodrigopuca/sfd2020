@@ -30,9 +30,9 @@
 
     </a-scene>
     <script>
-        var caja= document.querySelector("#caja");
-        var texto=document.querySelector("a-text");
-        var valor=0;
+        let caja= document.querySelector("#caja");
+        let texto=document.querySelector("a-text");
+        let valor=0;
         caja.addEventListener("click",function(){
             valor+=1;
             texto.setAttribute("value",valor)
